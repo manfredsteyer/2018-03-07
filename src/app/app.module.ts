@@ -10,18 +10,23 @@ import { AppComponent } from './app.component';
 import { FlightSearchComponent } from './flight-booking/flight-search/flight-search.component';
 import { FlightService } from './flight-booking/flight-search/flight.service';
 import { CityPipe } from './shared/pipes/city.pipe';
-import { FlightBookingModule } from './flight-booking/flight-booking.module';
+// import { FlightBookingModule } from './flight-booking/flight-booking.module';
 import { HomeComponent } from './home/home.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { BasketComponent } from './basket/basket.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    FlightBookingModule,
-    RouterModule.forRoot(APP_ROUTES)
+    // FlightBookingModule, // Würde Lazy Loading verhindern!
+    RouterModule.forRoot(
+      APP_ROUTES,
+      { preloadingStrategy: PreloadAllModules }
+    ),
+    SharedModule.forRoot()
   ],
   declarations: [
     AppComponent,

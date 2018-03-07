@@ -4,6 +4,7 @@ import { CityPipe } from './pipes/city.pipe';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { ExitGuard } from './exit.guard';
+import { ModuleWithProviders } from "@angular/core";
 
 @NgModule({
   imports: [
@@ -12,13 +13,22 @@ import { ExitGuard } from './exit.guard';
   declarations: [
     CityPipe
   ],
-  providers: [
-    ExitGuard,
-    AuthGuard,
-    AuthService // Das wird noch zum Problem!
-  ],
+  providers: [/* Wird ganz bewusst leer gelassen bei SharedModules!! */],
   exports: [
     CityPipe
   ]
 })
-export class SharedModule { }
+export class SharedModule { 
+
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        ExitGuard,
+        AuthGuard,
+        AuthService 
+      ]
+    }
+  }
+
+}
