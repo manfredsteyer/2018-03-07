@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CityPipe } from './pipes/city.pipe';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
+import { ExitGuard } from './exit.guard';
 
 @NgModule({
   imports: [
@@ -8,6 +11,11 @@ import { CityPipe } from './pipes/city.pipe';
   ],
   declarations: [
     CityPipe
+  ],
+  providers: [
+    ExitGuard,
+    AuthGuard,
+    AuthService // Das wird noch zum Problem!
   ],
   exports: [
     CityPipe

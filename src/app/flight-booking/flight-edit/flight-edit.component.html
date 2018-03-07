@@ -6,4 +6,15 @@
     <p>Id: {{id}}</p>
     <p>ShowDetails: {{showDetails}}</p>
   </div>
+
+  <div style="position:relative; z-index: 1000" *ngIf="showWarning" class="alert alert-warning">
+      <div>
+      Daten wurden nicht gespeichert! Trotzdem Maske verlassen?
+      </div>
+      <p>&nbsp;</p>
+      <div>
+          <a href="javascript:void(0)" (click)="decide(true)" class="btn btn-danger">Yes</a>
+          <a href="javascript:void(0)" (click)="decide(false)" class="btn btn-default">No</a>
+      </div>
+  </div>
 </div>
