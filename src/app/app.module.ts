@@ -1,6 +1,8 @@
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
+import { OAuthModule } from 'angular-oauth2-oidc';
+
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     HttpClientModule,
+    OAuthModule.forRoot(),
     // FlightBookingModule, // Würde Lazy Loading verhindern!
     RouterModule.forRoot(
       APP_ROUTES,

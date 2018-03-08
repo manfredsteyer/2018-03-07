@@ -5,6 +5,8 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { ExitGuard } from './exit.guard';
 import { ModuleWithProviders } from "@angular/core";
+import { AuthInterceptor } from './http/auth.interceptor';
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -26,7 +28,12 @@ export class SharedModule {
       providers: [
         ExitGuard,
         AuthGuard,
-        AuthService 
+        AuthService,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthInterceptor,
+          multi: true
+        } 
       ]
     }
   }
