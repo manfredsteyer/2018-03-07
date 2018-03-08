@@ -2,3 +2,30 @@
 
 <button (click)="login()" class="btn btn-default">Login</button>
 <button (click)="logout()" class="btn btn-default">Logout</button>
+
+<!--
+<tabbed-pane [activatedId]="active" (activatedIdChange)="active = $event">
+-->    
+<p>&nbsp;</p>
+<tabbed-pane [(activatedId)]="active" #tp>
+
+    <tab title="Booked" [id]="0">
+        Here you can find all passengers that have booked a flight ...
+    </tab>
+
+    <tab title="Checked in" [id]="1">
+        Here you can find all passengers checked in to their flights.
+    </tab>
+    <tab title="Boarded" [id]="2">
+        HEre you can find all boarded passengers.
+    </tab>    
+</tabbed-pane>
+<p>&nbsp;</p>
+<div>
+    ** {{active}} **
+    ** {{ tp.currentTitle }}**
+</div>
+<div>
+    <button class="btn btn-default" (click)="tp.expand()">Expand</button>
+    <button class="btn btn-default" (click)="tp.collapse()">Collapse</button>
+</div>

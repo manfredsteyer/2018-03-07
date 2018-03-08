@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Flight } from '../../entities/flight';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { FlightService } from './flight.service';
+import { EventService } from "../../event.service";
 
 @Component({
   selector: 'flight-search',
@@ -30,6 +31,7 @@ export class FlightSearchComponent implements OnInit {
   // private http: HttpClient;
 
   constructor(
+    private eventService: EventService,
     private flightService: FlightService) {
     // this.http = http;
   }
@@ -68,8 +70,9 @@ export class FlightSearchComponent implements OnInit {
     */
   }
 
-  select(f: Flight): void {
-    this.selectedFlight = f;
+  select(f: Flight, selected: boolean): void {
+    this.eventService.flightSelected(f);
+    this.basket[f.id] = selected;
   }
 
 }

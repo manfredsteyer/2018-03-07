@@ -7,17 +7,23 @@ import { ExitGuard } from './exit.guard';
 import { ModuleWithProviders } from "@angular/core";
 import { AuthInterceptor } from './http/auth.interceptor';
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { TabComponent } from './tab/tab.component';
+import { TabbedPaneComponent } from './tabbed-pane/tabbed-pane.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    CityPipe
-  ],
+    CityPipe,
+    TabComponent,
+    TabbedPaneComponent
+],
   providers: [/* Wird ganz bewusst leer gelassen bei SharedModules!! */],
   exports: [
-    CityPipe
+    CityPipe,
+    TabComponent,
+    TabbedPaneComponent
   ]
 })
 export class SharedModule { 
