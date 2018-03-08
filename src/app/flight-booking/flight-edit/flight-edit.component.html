@@ -5,7 +5,46 @@
   <div class="content">
     <p>Id: {{id}}</p>
     <p>ShowDetails: {{showDetails}}</p>
+
+    <h2>Dynamic</h2>
+
+    <form [formGroup]="formGroup">
+      <div class="form-group" *ngFor="let item of metaData">
+        <label>{{item.label}}:</label>
+        
+        <input class="form-control" [formControlName]="item.name">
+
+      </div>
+    </form>
+
+    <h2>Static</h2>
+    <form [formGroup]="formGroup">
+      <div class="form-group">
+        <label>Id:</label>
+        <input class="form-control" formControlName="id">
+      </div>
+      <div class="form-group">
+        <label>From:</label>
+        <input class="form-control" formControlName="from">
+      </div>
+      <div class="form-group">
+        <label>To:</label>
+        <input class="form-control" formControlName="to">
+      </div>
+      <div class="form-group">
+        <label>Date:</label>
+        <input class="form-control" formControlName="date">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-default" (click)="save()">Save</button>
+      </div>
+
+
+    </form>
+
   </div>
+
+
 
   <div style="position:relative; z-index: 1000" *ngIf="showWarning" class="alert alert-warning">
       <div>
